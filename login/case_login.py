@@ -28,11 +28,11 @@ class Case_Login(Base_Base):
         self.click(case_name, "resource", "com.dfwd.wlkt:id/tv_login")
 
     # 登陆成功断言
-    def toptitle_text_assertion(self, case_name, compare):
+    def toptitle_text_assertion(self, case_name):
         self.assertion(case_name, "resource", "com.dfwd.wlkt:id/tv_main_title_user", "你好，研发测试高中1")
 
     # 登录失败断言
-    def errortitle_text_assertion(self, case_name, compare):
+    def errortitle_text_assertion(self, case_name):
         self.assertion(case_name, "resource", "com.dfwd.wlkt:id/title", "用户登录")
 
     # 启动时日志记录
