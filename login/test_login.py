@@ -6,6 +6,7 @@ import pytest
 class Test_Login:
     # driver对象
     d = None
+    data_list = Data_Base("login")
 
     def setup_class(self):
         self.d = Case_Login()
