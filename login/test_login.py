@@ -33,6 +33,7 @@ class Test_Login:
 
         # 断言
         self.d.errortitle_text_assertion(case_name)
+        self.d.errorlogin_button_click(case_name)
 
     @pytest.mark.run(order=2)
     @pytest.mark.parametrize(argnames="username", argvalues=data_list["c_username"])
