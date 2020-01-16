@@ -9,35 +9,35 @@ class Case_Login(Base_Base):
 
     # 清除用户名
     def username_input_clear(self, case_name):
-        self.clear(case_name, "resource", "com.dfwd.wlkt:id/username_et")
+        self._clear(case_name, "resource", "com.dfwd.wlkt:id/username_et")
 
     # 输入用户名
     def username_input_input(self, case_name, username):
-        self.input(case_name, "resource", "com.dfwd.wlkt:id/username_et", username)
+        self._input(case_name, "resource", "com.dfwd.wlkt:id/username_et", username)
 
     # 清除密码
     def passwd_input_clear(self, case_name):
-        self.clear(case_name, "resource", "com.dfwd.wlkt:id/password_et")
+        self._clear(case_name, "resource", "com.dfwd.wlkt:id/password_et")
 
     # 输入密码
     def passwd_input_input(self, case_name, passwd):
-        self.input(case_name, "resource", "com.dfwd.wlkt:id/password_et", passwd)
+        self._input(case_name, "resource", "com.dfwd.wlkt:id/password_et", passwd)
 
     # 点击登录按钮
     def login_button_click(self, case_name):
-        self.click(case_name, "resource", "com.dfwd.wlkt:id/tv_login")
+        self._click(case_name, "resource", "com.dfwd.wlkt:id/tv_login")
 
     # 登陆成功断言
     def toptitle_text_assertion(self, case_name):
-        self.assertion(case_name, "resource", "com.dfwd.wlkt:id/tv_main_title_user", "你好，研发测试高中1")
+        self._assertion(case_name, "resource", "com.dfwd.wlkt:id/tv_main_title_user", "你好，研发测试高中1")
 
     # 登录失败断言
     def errortitle_text_assertion(self, case_name):
-        self.assertion(case_name, "resource", "com.dfwd.wlkt:id/title", "用户登录")
+        self._assertion(case_name, "resource", "com.dfwd.wlkt:id/title", "用户登录")
         
     # 登录失败确认按钮
     def errorlogin_button_click(self, case_name):
-        self.click(case_name, "resource", "com.dfwd.wlkt:id/llButtonContainer")
+        self._click(case_name, "resource", "com.dfwd.wlkt:id/llButtonContainer")
 
     # 启动时日志记录
     def start_log(self):
