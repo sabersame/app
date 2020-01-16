@@ -34,6 +34,10 @@ class Case_Login(Base_Base):
     # 登录失败断言
     def errortitle_text_assertion(self, case_name):
         self.assertion(case_name, "resource", "com.dfwd.wlkt:id/title", "用户登录")
+        
+    # 登录失败确认按钮
+    def errorlogin_button_click(self, case_name):
+        self.click(case_name, "resource", "com.dfwd.wlkt:id/llButtonContainer")
 
     # 启动时日志记录
     def start_log(self):
