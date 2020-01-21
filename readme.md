@@ -1,6 +1,6 @@
 # 自动化测试框架
 
-   * [简述](##简述)
+   * [简述](#简述)
         * [框架使用简述](#框架使用简述)
         * [框架注意事项](#框架注意事项)
    * [公共模块介绍](#公共模块介绍)
@@ -55,14 +55,16 @@
 	
 	3.该框架定义一个测试用例由:测试数据(data), 测试基本动作(case), 测试套件(suite)组成. 
 	
-	4.App元素定位建议使用 weditor库, 具体方法 -> adb连接设备(如'adb connect 127.0.0.1:7555'), 然后cmd中运行'python -m uiautomator2 init', 最后cmd运行'python -m weditor'将会打开一个web页面, 注意该cmd窗体不要关闭.
+	4.App元素定位建议使用 weditor库, 具体方法 -> adb连接设备(如'adb connect 127.0.0.1:7555');
+	然后cmd中运行'python -m uiautomator2 init', 最后cmd运行'python -m weditor'将会打开一个web页面, 注意该cmd窗体不要关闭.
     
 	5.windows元素定位使用的是windowsSDK中的Inspect.
 ## 公共模块介绍
 
 ### common
 
-	1.该路径下存放整个框架的底层代码以及入口模块; 所有的基本动作都在这里定义. 除Web方向外都由'Main_Unit'以及'Base_Unit'组成;(Web方向多一个'Support_Unit')
+	1.该路径下存放整个框架的底层代码以及入口模块; 所有的基本动作都在这里定义. 
+	除Web方向外都由'Main_Unit'以及'Base_Unit'组成;(Web方向多一个'Support_Unit')
 	
 	2.Base_Unit: 整个框架的底层代码, 用于封装各个动作.
 	
@@ -72,7 +74,9 @@
 	
 ### public
 
-	1.该路径下存在整个框架的辅助模块, 一个测试的"前中后"中'前', '后'阶段在这里完成. 除App方向外由'Data_Unit', 'Dingding_Unit', 'Git_Unit', 'Logging_Unit', 'Mail_Unit' 以及'Setting_Unit'组成;(App方向多'Decorator_Unit'以及'Relay_Unit')
+	1.该路径下存在整个框架的辅助模块, 一个测试的"前中后"中'前', '后'阶段在这里完成.
+	除App方向外由'Data_Unit', 'Dingding_Unit', 'Git_Unit', 'Logging_Unit', 'Mail_Unit' 以及'Setting_Unit'组成;
+	(App方向多'Decorator_Unit'以及'Relay_Unit')
 	
 	2.Data_Unit: 读取组装测试数据的模块.
 	
@@ -225,7 +229,8 @@ M.clear()
 ```
 需要注意的是, 接收者需要是一个列表, 而这些参数都是从配置文件中读取的, 即在'Set'被实例化的时候就已经获取到了.
 
-接着我们也要构造钉钉的通知消息'M.build_ding_msg(S.title_d, S.content_d, S.target_url, S.receivers_d)', 同理接收者也是个列表, 数据来源也是配置文件.
+接着我们也要构造钉钉的通知消息'M.build_ding_msg(S.title_d, S.content_d, S.target_url, S.receivers_d)', 
+同理接收者也是个列表, 数据来源也是配置文件.
 
 最后我们执行'M.clear()'将环境初始化即完整的进行了一次测试流程了, 该方法源码:
 ```python
@@ -772,7 +777,9 @@ teardown_class指的是测试后的清理操作.
 
 在windows框架中, 我们主要的参数为'control_type, method, position, depth'; 其中第1, 4个参数的解释请参考windows方法解释中'_click'操作的解释.
 
-而我们支持的'method', 即定位方式为有'Name', 'ClassName', 'foundIndex'以及'AutomationId'; 注意区分大小写, 其中'AutomationId'经测试只有为数字时候才有效果, foundIndex指的是当前目录下的窗体下标, 比如WindowsControl(Name="test")有3个EditControl, 那么我们就可以WindowsControl(Name="test").EditControl(foundIndex=2)来指定它.
+而我们支持的'method', 即定位方式为有'Name', 'ClassName', 'foundIndex'以及'AutomationId'; 注意区分大小写;
+其中'AutomationId'经测试只有为数字时候才有效果, foundIndex指的是当前目录下的窗体下标, 比如WindowsControl(Name="test")有3个EditControl, 
+那么我们就可以WindowsControl(Name="test").EditControl(foundIndex=2)来指定它.
 
 注意Inspect显示的position是自带了双引号的, 复制即可, 不需要我们自行添加.
 
