@@ -32,7 +32,7 @@
 
 ## 简述
 
-###框架使用简述
+### 框架使用简述
         
     1.该框架为基于POM/ATM + KDT模型设计的一套持续集成框架.
     
@@ -47,7 +47,7 @@
         
         (3) KDT: Keyword Driver Test, 指将测试数据通过关键字的方式读取进行测试.
         
-###框架注意事项
+### 框架注意事项
 
     1.该框架建议使用python 3.6.x版本; 3.8.x版本不支持windows端测试.
     
@@ -58,9 +58,9 @@
 	4.App元素定位建议使用 weditor库, 具体方法 -> adb连接设备(如'adb connect 127.0.0.1:7555'), 然后cmd中运行'python -m uiautomator2 init', 最后cmd运行'python -m weditor'将会打开一个web页面, 注意该cmd窗体不要关闭.
     
 	5.windows元素定位使用的是windowsSDK中的Inspect.
-##公共模块介绍
+## 公共模块介绍
 
-###common
+### common
 
 	1.该路径下存放整个框架的底层代码以及入口模块; 所有的基本动作都在这里定义. 除Web方向外都由'Main_Unit'以及'Base_Unit'组成;(Web方向多一个'Support_Unit')
 	
@@ -70,7 +70,7 @@
 	
 	4.Support_Unit: Web方向独有的一个模块, 主要用于对Base_Unit的辅助支持; 其他方向的对应功能已经整合入Base_Unit.
 	
-###public
+### public
 
 	1.该路径下存在整个框架的辅助模块, 一个测试的"前中后"中'前', '后'阶段在这里完成. 除App方向外由'Data_Unit', 'Dingding_Unit', 'Git_Unit', 'Logging_Unit', 'Mail_Unit' 以及'Setting_Unit'组成;(App方向多'Decorator_Unit'以及'Relay_Unit')
 	
@@ -90,39 +90,39 @@
 	
 	9.Relay_Unit: App方向测试中负责调用测试类型的模块.
 
-###main
+### main
 
 	1.该路径下仅有'Main'文件, 调用整个框架的主模块.
 	
-###case
+### case
 
 	1.存放测试用例组成中测试基本动作的路径, 一般命名方式为case_xxx:Case_Xxx.
 	
-###data
+### data
 
 	1.存放测试用例组成中测试数据的路径, 仅支持csv格式的数据源.
 
-###suite
+### suite
 
 	1.存放测试用例组成中测试套件的路径, 一般命名方式为test_xxx:Test_Xxx.
 	
-###imgs
+### imgs
 
 	1.用于存放错误截图的路径.
 
-###log
+### log
 
 	1.用于存放用例日志, 测试日志的路径.
 	
-###result
+### result
 	1.用于存放html格式测试报告的路径.
 
-###set
+### set
 	1.用于存放配置文件的路径.
 
-##流程介绍
+## 流程介绍
 
-###流程讲解
+### 流程讲解
 
 我们框架都是通过调用main路径下的'Main'文件完成的, 该文件源码:
 ```python
@@ -252,7 +252,7 @@ M.clear()
 ```
 原理就是根据每个路径下文件的特殊特征进行删除工作, 保证每个目录和测试开始前一样干净就行了.
 
-###配置文件讲解
+### 配置文件讲解
 
 配置文件, 即set目录下的'Setting.int'文件; 一个标准的配置文件包含:
 ```python
@@ -328,7 +328,7 @@ test_level = normal
  all -> 安装 - 用例测试 -> 快速测试 -> 卸载测试
 ```
 
-###data文件讲解
+### data文件讲解
 
 我们用于存放测试数据的路径, 仅仅支持csv格式的数据源; 一个登录的csv数据格式为:
 其中登录我们需要用户名以及密码两个输入域, 像这样:
@@ -338,7 +338,7 @@ passwd,123456,654321
 ```
 可以发现, 每个输入域占一行, 其中名称开头, 之后为他的不同参数值; 这个可以任意组合, 不做长度规定.
 
-###case文件讲解
+### case文件讲解
 
 case文件, 为我们一个测试用例定义基本操作的地方; 拿App端登录模块举例 完整代码为:
 ```python
@@ -522,7 +522,7 @@ class Case_Login(Base_Base):
 ```
 这两个为三个方向测试用例通用, 用于日志中记录用例的执行; 编写时直接复制即可.
 
-###suite文件讲解
+### suite文件讲解
 
 App端登录用例的suite文件源码如下:
 ```python
@@ -677,11 +677,11 @@ teardown_class指的是测试后的清理操作.
 ```
 我们观察发现, 结构和错误流程完全一样! 只是传入参数的值不同而已.
 
-##方法解释
+## 方法解释
 
 这里的方法仅指的是最基本的操作; 具体用例编写(case文件, data文件, suite文件请参考不同方向框架中自带的例子)
 
-###Windows端
+### Windows端
 
 1.    def _click(self, case_name, control_type, method, position, depth):
 点击操作, 需要传入用例名, 窗体类型, 定位方式, 定位值, 搜索深度.
@@ -717,7 +717,7 @@ teardown_class指的是测试后的清理操作.
 5.    def _close(self, case_name):
 关闭当前窗体(不是应用!)
 
-###App端
+### App端
 
 1.    def _click(self, case_name, method, position):
 点击操作, 需要传入用例名, 定位方式, 定位值
@@ -734,7 +734,7 @@ teardown_class指的是测试后的清理操作.
 5.    def _assertion(self, case_name, method, position, value):
 断言操作
 
-###Web端
+### Web端
 
 1.    def _start(self, url):
 开启浏览器, 需要传入url地址
@@ -766,9 +766,9 @@ teardown_class指的是测试后的清理操作.
 10.    def _handle_click(self, case_name, method, position):
 切换句柄点击操作
 
-##参数注意事项
+## 参数注意事项
 
-###Windows参数
+### Windows参数
 
 在windows框架中, 我们主要的参数为'control_type, method, position, depth'; 其中第1, 4个参数的解释请参考windows方法解释中'_click'操作的解释.
 
@@ -776,10 +776,10 @@ teardown_class指的是测试后的清理操作.
 
 注意Inspect显示的position是自带了双引号的, 复制即可, 不需要我们自行添加.
 
-###App参数
+### App参数
 
 在App框架中, 我们主要的参数为'method, position'; 其中method我们支持resourceID以及XPATH; 不过在编写case文件的时候, 请记得写成'resource'以及'xpath'; position, 我们只需要复制即可.
 
-###Web参数
-
+### Web参数
+ 
 在Web框架中, 我们主要的参数为'method, position'; 其中method支持'xpath, link text, id, name, css selector; 其余不过多赘述.
