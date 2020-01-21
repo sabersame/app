@@ -12,7 +12,7 @@ class Test_Login:
         self.d = Case_Login()
         self.d.start_log()
         # 预料外的弹出框关闭
-        self.d.accident_verify_button_click()
+        self.d.accident_watcher_button_click()
         self.d.watcher_start()
 
     def teardown_class(self):
@@ -34,7 +34,11 @@ class Test_Login:
         # 断言
         self.d.errortitle_text_assertion(case_name)
         self.d.errorlogin_button_click(case_name)
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> f689bfc999c8d298268fa9aaf88d3ead0d5fd608
     @pytest.mark.run(order=2)
     @pytest.mark.parametrize(argnames="username", argvalues=data_list["c_username"])
     @pytest.mark.parametrize(argnames="passwd", argvalues=data_list["c_passwd"])
