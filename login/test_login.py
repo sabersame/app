@@ -12,7 +12,7 @@ class Test_Login:
         self.d = Case_Login()
         self.d.start_log()
         # 预料外的弹出框关闭
-        self.d.accident_verify_button_click()
+        self.d.accident_watcher_button_click()
         self.d.watcher_start()
 
     def teardown_class(self):
