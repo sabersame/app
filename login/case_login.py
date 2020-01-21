@@ -48,7 +48,7 @@ class Case_Login(Base_Base):
         self.log(self.Set.history_log, "info", "登陆脚本执行完毕.")
 
     # 意外情况 - 电子笔校验
-    def accident_verify_button_click(self):
+    def accident_watcher_button_click(self):
         self.d.watcher.when('//*[@resource-id="com.dfwd.wlkt:id/tv_cancel"]').click()
 
     # 开启意外处理
